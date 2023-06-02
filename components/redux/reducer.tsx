@@ -1,18 +1,17 @@
-import {ADD_TO_CART, REMOVE_FROM_CART, SET_USER_DATA} from './constants'; //3
+import {ADD_TODO, REMOVE_TODO} from './constants';
 
-const initialState: any = [];
+const initialState: string[] = [];
+
 
 export const reducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case ADD_TO_CART:
-      return [...state, action.data];
-    case REMOVE_FROM_CART:
-      let result = state.filter((item: any) => {
-        return item.name != action.data;
+    case ADD_TODO:
+      return [...state, action.payload];
+    case REMOVE_TODO:
+      let result = state.filter((todos: string) => {
+        return todos != action.data;
       });
       return [...result];
-    case SET_USER_DATA:
-      return [...state, action.data]  
 
     default:
       return state;
